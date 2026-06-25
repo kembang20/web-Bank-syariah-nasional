@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Syariah Nasional - Berkah & Modern</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS Tambahan untuk Pop-up */
+        #modalHaji { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; align-items: center; justify-content: center; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav style="background-color: #006747; padding: 15px 20px;">
+            <div class="logo" style="display: flex; align-items: center; gap: 12px;">
+                <img src="assets/bsn.icon.png" alt="Logo BSN" style="width: 50px; height: 50px; object-fit: contain; display: block;" onerror="this.src='https://img.icons8.com/fluency/96/mosque.png';">
+                <span style="font-weight: bold; font-size: 1.3rem; color: white;">Bank Syariah Nasional 🌙</span>
+            </div>
+        </nav>
+        <div class="hero">
+            <h1>Raih Hidup Berkah Bersama Bank BSN</h1>
+            <p>Kelola finansial tanpa riba lewat aplikasi Bale Syariah. Urusan KPR, tabungan haji, hingga cicilan emas dalam satu genggaman.</p>
+        </div>
+    </header>
+
+    <section class="produk-section">
+        <h2>Produk & Layanan Unggulan</h2>
+        <div class="container-produk">
+            <div class="card">
+                <img src="assets/haji-icon.jpeg" alt="Haji" onerror="this.src='https://img.icons8.com/fluency/96/kaaba.png';">
+                <h3>Tabungan Haji</h3>
+                <p>Rencanakan ibadah ke Tanah Suci dengan akad <strong>Mudharabah</strong> yang transparan.</p>
+                <button onclick="bukaModalHaji()" class="btn" style="width: 100%; border: none; cursor: pointer;">Info & Syarat Haji</button>
+            </div>
+            <div class="card">
+                <img src="assets/kpr-icon.png" alt="KPR" onerror="this.src='https://img.icons8.com/fluency/96/home.png';">
+                <h3>KPR Syariah</h3>
+                <p>Miliki rumah impian dengan cicilan tetap sampai lunas tanpa bunga (Riba).</p>
+                <a href="#area-kpr-syariah" class="btn">Cek Rumah & Simulasi</a>
+            </div>
+            <div class="card">
+                <img src="assets/mobile-app.png" alt="Mobile Banking" onerror="this.src='https://img.icons8.com/fluency/96/phone.png';">
+                <h3>Mobile Banking</h3>
+                <p>Transaksi mudah, bayar zakat, dan cek saldo dalam satu genggaman tangan.</p>
+                <a href="#" onclick="event.preventDefault(); bukaPlayStoreLangsung();" class="btn" style="text-decoration: none; display: block; text-align: center; cursor: pointer; padding: 10px;">Download App</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Haji -->
+    <div id="modalHaji">
+        <div style="background:white; padding:30px; border-radius:20px; max-width:400px; width:90%; position:relative; text-align:center;">
+            <h3 style="color: #006747;">Persyaratan Tabungan Haji</h3>
+            <ul style="text-align:left; font-size: 0.9rem; margin-bottom: 20px;">
+                <li>Fotokopi KTP & KK yang berlaku.</li>
+                <li>Setoran awal mulai dari Rp 100.000.</li>
+                <li>Mengisi formulir pembukaan rekening Mudharabah.</li>
+                <li>Setoran minimal untuk pendaftaran Haji: Rp 25.000.000.</li>
+            </ul>
+            <a href="https://wa.me/6287870251426?text=Halo%20BSN,%20saya%20ingin%20tanya%20detail%20pendaftaran%20Tabungan%20Haji." 
+               class="btn" style="width: 100%; display:block; text-align:center; box-sizing:border-box; text-decoration:none;">
+               Konsultasi via WhatsApp
+            </a>
+            <button onclick="tutupModalHaji()" style="margin-top:15px; background:none; border:none; color:#666; cursor:pointer; text-decoration:underline;">Tutup</button>
+        </div>
+    </div>
+
+    <section id="area-kpr-syariah" style="padding: 60px 20px; background-color: #f4f7f6; text-align: center;">
+        <h2 style="color: #006747; margin-bottom: 10px;">Pilihan Hunian KPR Syariah</h2>
+        <div id="container-katalog" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; max-width: 1100px; margin: 0 auto;"></div>
+    </section>
+
+    <section id="simulasi-kpr" style="padding: 60px 20px; background-color: #fff; text-align: center;">
+        <h2 style="color: #006747; margin-bottom: 5px;">Kalkulator Simulasi KPR Syariah</h2>
+        <p id="notifPilihan" style="color: #666; font-size: 0.9rem; margin-bottom: 25px; font-style: italic;"></p>
+        <div style="max-width: 500px; margin: 0 auto; background: #f4f7f6; padding: 30px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+            <div style="text-align: left; margin-bottom: 15px;">
+                <label>Harga Properti (Rp):</label>
+                <input type="number" id="hargaRumah" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd; margin-top: 5px;">
+            </div>
+            <div style="text-align: left; margin-bottom: 15px;">
+                <label>Estimasi Biaya Renovasi (Rp):</label>
+                <input type="number" id="biayaRenovasi" value="0" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd; margin-top: 5px;">
+            </div>
+            <div style="text-align: left; margin-bottom: 15px;">
+                <label>Nilai Pasar (Rp):</label>
+                <input type="number" id="nilaiPasar" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd; margin-top: 5px;">
+            </div>
+            <div style="text-align: left; margin-bottom: 20px;">
+                <label>Jangka Waktu (Tahun):</label>
+                <input type="number" id="tenor" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd; margin-top: 5px;">
+            </div>
+            <button onclick="hitungSimulasi()" class="btn" style="width: 100%; border: none; cursor: pointer; padding: 12px;">Hitung Total Investasi</button>
+            
+            <div id="hasilSimulasi" style="margin-top: 25px; padding: 20px; border-radius: 15px; background: #ffffff; border: 2px solid #006747; display: none; text-align: left;">
+                <h4 style="margin: 0 0 10px 0; color: #006747; text-align: center;">Rincian Investasi</h4>
+                <div style="font-size: 0.9rem; color: #333;">
+                    <p>Harga Properti: <span id="rincianHarga" style="float: right;">Rp 0</span></p>
+                    <p>Biaya Renovasi: <span id="rincianRenovasi" style="float: right;">Rp 0</span></p>
+                    <p>Nilai Pasar: <span id="rincianNilaiPasar" style="float: right;">Rp 0</span></p>
+                    <hr style="border: 0; border-top: 1px solid #eee;">
+                    <p style="font-weight: bold;">Total Nilai Investasi: <span id="teksTotal" style="float: right; color: #006747;">Rp 0</span></p>
+                    <p style="font-weight: bold; color: #006747;">Estimasi Profit: <span id="teksProfit" style="float: right; color: #006747;">Rp 0</span></p>
+                </div>
+                <div style="margin-top: 15px; padding-top: 10px; border-top: 2px dashed #006747; text-align: center;">
+                    <h4 style="margin: 0; color: #006747;">Estimasi Angsuran Per Bulan:</h4>
+                    <p id="teksCicilan" style="font-size: 1.4rem; font-weight: bold; margin: 5px 0 0 0; color: #333;"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="padding: 40px 20px; background: #333; color: white; text-align: center;">
+        <h3>Bank Syariah Nasional 🌙</h3>
+        <p><strong>Kantor Cabang Serang:</strong><br>Jl. Sumurpecung no. 174, Serang, Banten, 42118</p>
+        <p>📞 Layanan Nasabah: <strong>1500 286</strong></p>
+        <div style="margin: 20px 0; display: flex; flex-direction: column; align-items: center; gap: 10px;">
+            <a href="https://wa.me/6287870251426" style="color: #25D366; text-decoration: none;"><i class="fa-brands fa-whatsapp"></i> WhatsApp: 0878-7025-1426</a>
+            <a href="https://www.instagram.com/banksyariahnasional" style="color: #E1306C; text-decoration: none;"><i class="fa-brands fa-instagram"></i> @banksyariahnasional</a>
+            <a href="mailto:Muhammad.firmansyah@bsn.co.id" style="color: #5ab3f8; text-decoration: none;"><i class="fa-solid fa-envelope"></i> Muhammad.firmansyah@bsn.co.id</a>
+            <a href="https://www.bsn.co.id" style="color: #fff; text-decoration: none;"><i class="fa-solid fa-globe"></i> www.bsn.co.id</a>
+        </div>
+        <p style="font-size: 0.8rem; opacity: 0.7;">&copy; 2026 Bank Syariah Nasional. Terdaftar dan diawasi oleh OJK.</p>
+    </footer>
+
+    <script>
+        // Fungsi Pop-up
+        function bukaModalHaji() { document.getElementById('modalHaji').style.display = 'flex'; }
+        function tutupModalHaji() { document.getElementById('modalHaji').style.display = 'none'; }
+
+        // Kode Katalog & Simulasi sebelumnya...
+        const daftarRumah = [
+                { 
+                nama: "PERUMAHAN GREEN SERANG INDAH BLOK C NO 22", 
+                tipe: "42/80", 
+                lokasi: "Jl.Jendral Ahmad Yani serang no.175, Sumurpecung, Kec.Serang, Kota Serang, Banten 42117", 
+                harga: 1016000000, 
+                img: "assets/perumahan1-foto.jpeg" 
+            },
+            { 
+                nama: "PERUMAHAN BOEKIT SERANG DAMAI BLOK D2 NO 18", 
+                tipe: "36/72", 
+                lokasi: "Jl.Jendral Ahmad Yani serang no.175, Sumurpecung, Kec.Serang, Kota Serang, Banten 42117", 
+                harga: 807000000, 
+                img: "assets/perumahan2-foto.jpeg" 
+            },
+            { 
+                nama: "PERUMAHAN CIUJUNG INDAH BLOK G4 NO 23", 
+                tipe: "30/60", 
+                lokasi: "Jl.Jendral Ahmad Yani serang no.175, Sumurpecung, Kec.Serang, Kota Serang, Banten 42117", 
+                harga: 155000000, 
+                img: "assets/perumahan3-foto.jpeg" 
+                 },
+            { 
+                nama: "PERUMAHAN CIRUAS LAND BLOK D18 NO 18", 
+                tipe: "30/60", 
+                lokasi: "Jl.Jendral Ahmad Yani serang no.175, Sumurpecung, Kec.Serang, Kota Serang, Banten 42117", 
+                harga: 195000000, 
+                img: "assets/perumahan4-foto.jpeg" 
+            
+            }
+        ];
+
+        function muatKatalog() {
+            const container = document.getElementById('container-katalog');
+            container.innerHTML = daftarRumah.map(r => `
+                <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); width: 300px; text-align: left;">
+                    <img src="${r.img}" style="width: 100%; height: 200px; object-fit: cover;" onerror="this.src='https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=500'">
+                    <div style="padding: 20px;">
+                        <h3 style="margin-bottom: 5px;">${r.nama}</h3>
+                        <p style="font-size: 0.85rem; color: #666; margin-bottom: 5px;">📍 ${r.lokasi}</p>
+                        <p style="font-size: 0.9rem; margin-bottom: 10px;">Tipe: ${r.tipe}</p>
+                        <p style="font-weight:bold; color:#006747; font-size: 1.1rem; margin-bottom: 15px;">Rp ${r.harga.toLocaleString('id-ID')}</p>
+                        <button onclick="pilihUnitRumah(${r.harga}, '${r.nama}')" class="btn" style="width: 100%; border: none; padding: 10px; cursor: pointer;">Pilih Rumah</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+        muatKatalog();
+
+        function bukaPlayStoreLangsung() {
+            const packageId = "co.id.newmb.btnsyariah";
+            if (/Android/i.test(navigator.userAgent)) {
+                window.location.href = `intent://details?id=${packageId}#Intent;scheme=market;package=com.android.vending;end`;
+            } else {
+                window.open(`https://play.google.com/store/apps/details?id=${packageId}`, '_blank');
+            }
+        }
+
+        function pilihUnitRumah(harga, namaUnit) {
+            document.getElementById('hargaRumah').value = harga;
+            document.getElementById('biayaRenovasi').value = 
+            document.getElementById('notifPilihan').innerText = "Menampilkan simulasi untuk: " + namaUnit;
+            document.getElementById('simulasi-kpr').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function hitungSimulasi() {
+            const harga = parseFloat(document.getElementById('hargaRumah').value) || 0;
+            const renovasi = parseFloat(document.getElementById('biayaRenovasi').value) || 0;
+            const nilaiPasar = parseFloat(document.getElementById('nilaiPasar').value) || 0;
+            const tahun = parseInt(document.getElementById('tenor').value) || 0;
+
+            if (harga > 0 && tahun > 0) {
+                const totalInvestasi = harga + renovasi;
+                const profit = nilaiPasar > 0 ? (nilaiPasar - totalInvestasi) : 0;
+                const cicilan = Math.round((totalInvestasi + (totalInvestasi * 0.05 * tahun)) / (tahun * 12));
+                
+                document.getElementById('rincianHarga').innerText = "Rp " + harga.toLocaleString('id-ID');
+                document.getElementById('rincianRenovasi').innerText = "Rp " + renovasi.toLocaleString('id-ID');
+                document.getElementById('rincianNilaiPasar').innerText = "Rp " + nilaiPasar.toLocaleString('id-ID');
+                document.getElementById('teksTotal').innerText = "Rp " + totalInvestasi.toLocaleString('id-ID');
+                document.getElementById('teksProfit').innerText = "Rp " + profit.toLocaleString('id-ID');
+                document.getElementById('teksCicilan').innerText = "Rp " + cicilan.toLocaleString('id-ID') + " / bulan";
+                document.getElementById('hasilSimulasi').style.display = "block";
+            } else {
+                alert("Mohon masukkan Harga Properti dan Jangka Waktu dengan benar.");
+            }
+        }
+    </script>
+</body>
+</html>

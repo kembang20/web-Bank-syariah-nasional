@@ -1,0 +1,121 @@
+/* 1. Pengaturan Umum */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+/* 2. Header & Hero Section */
+header {
+    background-color: #006747; /* Hijau Emerald Syariah */
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+/* 3. Layouting Kartu dengan Flexbox */
+.container-produk {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 30px; 
+    padding: 40px;
+}
+
+/* 4. Desain Kartu Produk */
+.card {
+    background: white;
+    width: 300px; 
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.card img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain; 
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    color: #006747;
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* 5. Desain Tombol (CTA) */
+.btn {
+    display: inline-block; 
+    background-color: #d4af37; /* Warna Gold Premium */
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px; 
+    text-decoration: none; 
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #b08d48; 
+    transform: scale(1.05); 
+}
+
+/* 6. Styling Tambahan untuk Simulasi KPR */
+#simulasi-kpr input {
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+#simulasi-kpr input:focus {
+    outline: none;
+    border-color: #006747;
+}
+
+/* 7. Styling untuk Footer */
+footer {
+    background-color: #004d35; /* Hijau yang lebih gelap dan elegan */
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+    margin-top: 60px;
+}
+
+.footer-content h3 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.footer-content p {
+    font-size: 0.95rem;
+    margin: 8px 0;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.copyright {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
